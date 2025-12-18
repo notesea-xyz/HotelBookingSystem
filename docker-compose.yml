@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: hotel_booking_mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DATABASE: hotel-booking
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - hotel_booking_network
+
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: hotel_booking_backend
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      NODE_ENV: production
+      MONGO_URI: mongodb://admin:password123@mongodb:27017/hotel-booking?authSource=admin
+    depends_on:
+      - mongodb
+    networks:
+      - hotel_booking_network
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: hotel_booking_frontend
+    restart: always
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: http://localhost:5000/api
+    depends_on:
+      - backend
+    networks:
+      - hotel_booking_network
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+
+volumes:
+  mongodb_data:
+
+networks:
+  hotel_booking_network:
+    driver: bridge
