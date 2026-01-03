@@ -99,14 +99,14 @@ hotel-management-system/
 
 6. **Access the Application**
    - Frontend: http://localhost:5173
-   - Backend API: http://localhost:5000
+   - Backend API: https://hotelbookingsystem-1.onrender.com
 
 ## Environment Variables
 
 ### Client (.env)
 ```
-VITE_API_URL=http://localhost:5000/api
-VITE_SOCKET_URL=http://localhost:5000
+VITE_API_URL=https://hotelbookingsystem-1.onrender.com/api
+VITE_SOCKET_URL=https://hotelbookingsystem-1.onrender.com
 VITE_STRIPE_PUBLIC_KEY=your_stripe_public_key
 VITE_GOOGLE_MAPS_KEY=your_google_maps_key
 ```

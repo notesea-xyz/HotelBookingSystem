@@ -70,8 +70,8 @@ cp .env.example .env
 
 Edit the `.env` file:
 ```env
-VITE_API_URL=http://localhost:5000/api
-VITE_SOCKET_URL=http://localhost:5000
+VITE_API_URL=https://hotelbookingsystem-1.onrender.com/api
+VITE_SOCKET_URL=https://hotelbookingsystem-1.onrender.com
 VITE_STRIPE_PUBLIC_KEY=your_stripe_public_key
 VITE_GOOGLE_MAPS_KEY=your_google_maps_api_key
 ```
@@ -100,7 +100,7 @@ cd server
 npm run dev
 ```
 
-The server will start on http://localhost:5000
+The server will start on https://hotelbookingsystem-1.onrender.com
 
 #### Start Frontend Development Server
 ```bash

@@ -10,7 +10,7 @@ export const NotificationProvider = ({ children }) => {
   const [socket, setSocket] = useState(null)
 
   useEffect(() => {
-    const socketUrl = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000'
+    const socketUrl = import.meta.env.VITE_SOCKET_URL || 'https://hotelbookingsystem-1.onrender.com'
     const newSocket = io(socketUrl, {
       auth: {
         token: localStorage.getItem('token'),
